@@ -21,7 +21,7 @@ public class Car : MonoBehaviour
 
     private const float turnSensitivity = 30;
     private const float maxSteeringAngle = 40;
-    private const float tyreSlip = 1200;
+    private const float tyreSlip = 1000;
 
     private float wheelRadius;
 
