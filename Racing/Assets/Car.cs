@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class Car : MonoBehaviour
 {
     private Rigidbody rb;
+    [SerializeField] private CinemachineVirtualCamera cam;
+    [SerializeField] private float maxFov;
+    private float minFov;
     [SerializeField] private Text speedText;
 
 
@@ -39,6 +43,7 @@ public class Car : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.centerOfMass = centerOfMass;
         wheelRadius = wheels[0].mesh.GetComponent<MeshRenderer>().bounds.extents.y;
+        minFov = cam.m_Lens.FieldOfView;
     }
     private void OnDrawGizmos()
     {
@@ -53,7 +58,9 @@ public class Car : MonoBehaviour
         timeSinceAccel = Input.GetAxisRaw("Vertical") != 0 ? timeSinceAccel += Time.deltaTime * 0.1f : 0;
         engineForce = Input.GetAxisRaw("Vertical") * Mathf.InverseLerp(0, topSpeed, topSpeed - kmph) * acceleration;
 
-        speedText.text = Mathf.Floor(kmph).ToString() + "km/h";
+        cam.m_Lens.FieldOfView = minFov + (Mathf.Abs(kmph) / topSpeed) * (maxFov - minFov);
+
+        speedText.text = Mathf.Floor(Mathf.Abs(kmph)).ToString() + "km/h";
 
         for (int i = 0; i < 4; i++)
         {
