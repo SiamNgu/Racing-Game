@@ -43,6 +43,8 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         minFov = cinecam.m_Lens.FieldOfView;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void Start()
@@ -65,7 +67,7 @@ public class GameManager : MonoBehaviour
 
         RunTimer();
 
-        cinecam.m_Lens.FieldOfView = minFov + (Mathf.Abs(car.kmph) / car.topSpeed) * (maxFov - minFov);
+        cinecam.m_Lens.FieldOfView = minFov + (Mathf.Abs(car.kmph) / car.carDataScriptableObject.topSpeed) * (maxFov - minFov);
 
         speedText.text = Mathf.Floor( car.kmph )+ "km/h";
     }
