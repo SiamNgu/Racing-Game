@@ -23,29 +23,15 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Text speedText;
     [SerializeField] private TMP_Text totalTimeText;
 
-    [Header("Finish line")]
-    [SerializeField] private GameObject finishLine;
-    [SerializeField] private LayerMask finishLineLayerMask;
-
-
     [Header("Timer")]
     private float totalSeconds;
-    [SerializeField] private string s_seconds;
-    [SerializeField] private string s_minutes;
+    private string s_seconds;
+    private string s_minutes;
 
     [Header("References")]
+    [SerializeField] private GameObject finishLine;
+    [SerializeField] private LayerMask finishLineLayerMask;
     [SerializeField] private Car car;
-    [SerializeField] private CinemachineVirtualCamera cinecam;
-
-    private const float maxFov = 90;
-    private float minFov;
-
-    private void Awake()
-    {
-        minFov = cinecam.m_Lens.FieldOfView;
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-    }
 
     private void Start()
     {
@@ -67,8 +53,6 @@ public class GameManager : MonoBehaviour
 
         RunTimer();
 
-        cinecam.m_Lens.FieldOfView = minFov + (Mathf.Abs(car.kmph) / car.carDataScriptableObject.topSpeed) * (maxFov - minFov);
-
         speedText.text = Mathf.Floor( car.kmph )+ "km/h";
     }
 
@@ -88,19 +72,26 @@ public class GameManager : MonoBehaviour
 
     public void Resume()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
         gameState = GameStates.PlayState;
         Time.timeScale = 1;
         pauseUI.SetActive(false);
     }
     private void Pause()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         gameState = GameStates.PauseState;
         Time.timeScale = 0;
         pauseUI.SetActive(true);
+
     }
     
     private void Finish()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
         totalTimeText.text = s_minutes + " : " + s_seconds;
         gameState = GameStates.WinState;
         finishUI.SetActive(true);

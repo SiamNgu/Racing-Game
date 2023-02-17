@@ -19,9 +19,12 @@ public class Car : MonoBehaviour
     #region Hardcoded Variables
     private const float turnSensitivity = 25;
     private const float maxSteeringAngle = 40;
-    private const float tyreGrip = 1000;
-    private const float springForce = 20000;
-    private const float springDamping = 3200;
+    private const float tyreGrip = 950;
+    private const float springForce = 10000;
+    private const float springDamping = 1500;
+    private const float steerSpeed  = 50;
+    private const float steerCenteringSpeed = 10;
+    private const float decelerationAmount = 30;
     #endregion
 
     #region Static Variables
@@ -69,9 +72,9 @@ public class Car : MonoBehaviour
         engineAudioSource.playOnAwake = false;
         engineAudioSource.pitch = 0;
         engineAudioSource.clip = carDataScriptableObject.engineSound;
-
         //rigidbody
-        rb.centerOfMass = new Vector3(0, 0, 0);
+        float betweenWheels = (wheels[0].transform.localPosition.z + wheels[2].transform.localPosition.z) * 0.5f;
+        rb.centerOfMass = new Vector3(0, .17f, betweenWheels);
         #endregion
     }
 
@@ -84,10 +87,9 @@ public class Car : MonoBehaviour
     private void OnDrawGizmos()
     {
         rb = GetComponent<Rigidbody>();
-        BoxCollider carCollider = GetComponent<BoxCollider>();
-        rb.centerOfMass = new Vector3(0, 0, 0);
-        Debug.Log(carCollider.size.y);
-        Gizmos.DrawSphere(rb.worldCenterOfMass, 0.1f);
+        float betweenWheels = (wheels[0].transform.localPosition.z + wheels[2].transform.localPosition.z) * 0.5f;
+        rb.centerOfMass = new Vector3(0, .1f, betweenWheels);
+        Gizmos.DrawSphere(rb.worldCenterOfMass, 0.17f);
     }
     #endregion
 
@@ -161,6 +163,9 @@ public class Car : MonoBehaviour
                 //Acceleration
                 Vector3 accelerationForce = engineForceOutput * wheels[i].transform.forward;
 
+                //Deceleration
+                Vector3 decelerationForce = Input.GetAxisRaw("Vertical") == 0 ? -wheels[i].transform.forward * wheelVel.z * decelerationAmount : Vector3.zero;
+
                 //Braking
                 Vector3 brakingForce = Input.GetKey(KeyCode.Space) ? -wheels[i].transform.forward * wheelVel.z * carDataScriptableObject.brakeForce : Vector3.zero;
 
@@ -169,7 +174,7 @@ public class Car : MonoBehaviour
                 #endregion
 
                 //Applying force
-                rb.AddForceAtPosition(supspensionForce + accelerationForce + xGripForce + brakingForce, hit.point);
+                rb.AddForceAtPosition(supspensionForce + accelerationForce + xGripForce + brakingForce + decelerationForce, hit.point);
             }
 
             //Calculating wheel position if not grounded
@@ -189,12 +194,11 @@ public class Car : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-            wheelTransform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X") * Time.deltaTime * 110);
+            wheelTransform.Rotate(Vector3.up * Input.GetAxisRaw("Mouse X") * Time.deltaTime * steerSpeed);
         }
         else if (!Input.GetMouseButton(0))
         {
-            Debug.Log("Resetting");
-            wheelTransform.localRotation = Quaternion.Lerp(wheelTransform.localRotation, Quaternion.identity, Time.deltaTime * 10);
+            wheelTransform.localRotation = Quaternion.Lerp(wheelTransform.localRotation, Quaternion.identity, Time.deltaTime * steerCenteringSpeed);
         }
     }
 

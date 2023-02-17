@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   brakeForce: 200
   topSpeed: 260
-  acceleration: 700
+  acceleration: 1000
   engineSound: {fileID: 8300000, guid: 75fa27e467267c74f91f1f6f4e74ff88, type: 3}
