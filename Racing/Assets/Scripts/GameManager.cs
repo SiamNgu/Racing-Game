@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject finishUI;
     [SerializeField] private GameObject playUI;
     [SerializeField] private Text timerText;
+    [SerializeField] private Slider RPMSlider;
     [SerializeField] private Text speedText;
     [SerializeField] private TMP_Text totalTimeText;
 
@@ -54,6 +55,7 @@ public class GameManager : MonoBehaviour
         RunTimer();
 
         speedText.text = Mathf.Floor( car.kmph )+ "km/h";
+        RPMSlider.value = car.rpm;
     }
 
     void RunTimer()

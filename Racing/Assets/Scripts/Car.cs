@@ -1,4 +1,6 @@
+using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof (BoxCollider) )]
 [RequireComponent(typeof (Rigidbody) )]
@@ -19,12 +21,13 @@ public class Car : MonoBehaviour
     #region Hardcoded Variables
     private const float turnSensitivity = 25;
     private const float maxSteeringAngle = 40;
-    private const float tyreGrip = 950;
+    private const float tyreGrip = 930;
     private const float springForce = 10000;
     private const float springDamping = 1500;
     private const float steerSpeed  = 50;
     private const float steerCenteringSpeed = 10;
     private const float decelerationAmount = 30;
+    private const float revSpeed = 1;
     #endregion
 
     #region Static Variables
@@ -35,6 +38,7 @@ public class Car : MonoBehaviour
 
     public float kmph { get; private set; } = 0;
     private float engineForceOutput;
+    public float rpm { get; private set; } = 0;
 
     #region Type Declarations
     [System.Serializable] [SerializeField] private struct Wheel
@@ -95,14 +99,17 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
-        float verticalInputAxis = Input.GetKey(KeyCode.Space) ? 0 : Input.GetAxisRaw("Vertical");
-        kmph = transform.InverseTransformDirection(rb.velocity).z * 3.6f;
-        float potentialEngineForce = Mathf.InverseLerp(0, carDataScriptableObject.topSpeed, carDataScriptableObject.topSpeed - kmph) * carDataScriptableObject.acceleration;
+        kmph = MpsToKph( transform.InverseTransformDirection(rb.velocity).z );
 
+        rpm = Mathf.Lerp(rpm, Mathf.Abs(Input.GetAxisRaw("Vertical")), Time.deltaTime * 1 * revSpeed);
+        float verticalInputAxis = Input.GetKey(KeyCode.Space) ? 0 : Input.GetAxisRaw("Vertical");
+        float distToTopSpeed = Mathf.InverseLerp(0, carDataScriptableObject.topSpeed, carDataScriptableObject.topSpeed - kmph);
+        float potentialEngineForce = distToTopSpeed * carDataScriptableObject.acceleration;
         engineForceOutput = verticalInputAxis * potentialEngineForce;
 
         //audio
-        engineAudioSource.pitch = Mathf.Lerp(engineAudioSource.pitch, 2.5f * Mathf.InverseLerp(0, carDataScriptableObject.acceleration, (carDataScriptableObject.acceleration - potentialEngineForce) * Mathf.Abs(verticalInputAxis)) + .5f, Time.deltaTime * 3);
+        engineAudioSource.pitch = rpm;
+        engineAudioSource.volume = Mathf.SmoothStep(engineAudioSource.volume, Mathf.Abs(Input.GetAxisRaw("Vertical")), Time.deltaTime * 5);
 
         #region Wheel Rotations
         //Looping Through Wheels
@@ -207,5 +214,10 @@ public class Car : MonoBehaviour
         float calculatedAngle = PositiveAngleToAngle(wheelTransform.transform.localEulerAngles.y);
         float steerAmount = (Input.GetAxisRaw("Horizontal") == 0 && calculatedAngle != 0) ? -Mathf.Sign(calculatedAngle) * Time.deltaTime * turnSensitivity : Input.GetAxisRaw("Horizontal") * Time.deltaTime * turnSensitivity;
         wheelTransform.transform.Rotate(Vector3.up, steerAmount, Space.Self);
+    }
+
+    private float MpsToKph(float mps)
+    {
+        return mps * 3.6f;
     }
 }
