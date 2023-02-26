@@ -21,7 +21,7 @@ public class Car : MonoBehaviour
     #region Hardcoded Variables
     private const float turnSensitivity = 25;
     private const float maxSteeringAngle = 40;
-    private const float tyreGrip = 930;
+    private const float tyreGrip = 900;
     private const float springForce = 10000;
     private const float springDamping = 1500;
     private const float steerSpeed  = 50;
@@ -104,7 +104,7 @@ public class Car : MonoBehaviour
         rpm = Mathf.Lerp(rpm, Mathf.Abs(Input.GetAxisRaw("Vertical")), Time.deltaTime * 1 * revSpeed);
         float verticalInputAxis = Input.GetKey(KeyCode.Space) ? 0 : Input.GetAxisRaw("Vertical");
         float distToTopSpeed = Mathf.InverseLerp(0, carDataScriptableObject.topSpeed, carDataScriptableObject.topSpeed - kmph);
-        float potentialEngineForce = distToTopSpeed * carDataScriptableObject.acceleration;
+        float potentialEngineForce = distToTopSpeed * carDataScriptableObject.acceleration  ;
         engineForceOutput = verticalInputAxis * potentialEngineForce;
 
         //audio
