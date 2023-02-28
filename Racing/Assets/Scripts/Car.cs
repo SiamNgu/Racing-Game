@@ -10,12 +10,14 @@ public class Car : MonoBehaviour
     [Header("Setup Variables")]
     [SerializeField] private Wheel[] wheels;
     [SerializeField] private float springHeight;
+    [SerializeField] private AudioSource engineAudioSource;
+
 
     [Header("Car Data")]
     public CarDataScriptableObject carDataScriptableObject;
 
     [Header("Settings")]
-    public SteeringDevice steeringDevice;
+    public string steeringDevice;
     #endregion
 
     #region Hardcoded Variables
@@ -33,7 +35,6 @@ public class Car : MonoBehaviour
     #region Static Variables
     private float wheelRadius;
     private Rigidbody rb;
-    private AudioSource engineAudioSource;
     #endregion
 
     public float kmph { get; private set; } = 0;
@@ -45,11 +46,6 @@ public class Car : MonoBehaviour
     {
         public Transform transform;
         public Transform mesh;
-    }
-    public enum SteeringDevice
-    {
-        Mouse, 
-        Keyboard
     }
     #endregion
 
@@ -67,7 +63,6 @@ public class Car : MonoBehaviour
         #region Setting Static Variables
         rb = GetComponent<Rigidbody>();
         wheelRadius = wheels[0].mesh.GetComponent<MeshRenderer>().bounds.extents.y;
-        engineAudioSource = Instantiate(new GameObject("Engine Audio", typeof(AudioSource)), transform).GetComponent<AudioSource>();
         #endregion
 
         #region Default Parameters
@@ -80,6 +75,8 @@ public class Car : MonoBehaviour
         float betweenWheels = (wheels[0].transform.localPosition.z + wheels[2].transform.localPosition.z) * 0.5f;
         rb.centerOfMass = new Vector3(0, .17f, betweenWheels);
         #endregion
+
+        steeringDevice = SettingDataClasses.steeringDevices[PlayerPrefs.GetInt("Steering Device")];
     }
 
     private void Start()
@@ -104,7 +101,7 @@ public class Car : MonoBehaviour
         rpm = Mathf.Lerp(rpm, Mathf.Abs(Input.GetAxisRaw("Vertical")), Time.deltaTime * 1 * revSpeed);
         float verticalInputAxis = Input.GetKey(KeyCode.Space) ? 0 : Input.GetAxisRaw("Vertical");
         float distToTopSpeed = Mathf.InverseLerp(0, carDataScriptableObject.topSpeed, carDataScriptableObject.topSpeed - kmph);
-        float potentialEngineForce = distToTopSpeed * carDataScriptableObject.acceleration  ;
+        float potentialEngineForce = distToTopSpeed * carDataScriptableObject.acceleration;
         engineForceOutput = verticalInputAxis * potentialEngineForce;
 
         //audio
@@ -121,10 +118,10 @@ public class Car : MonoBehaviour
                 //Calculating and applying steer
                 switch (steeringDevice)
                 {
-                    case SteeringDevice.Mouse:
+                    case "Mouse":
                         SetMouseWheelSteering(wheels[i].transform);
                         break;
-                    case SteeringDevice.Keyboard:
+                    case "Keyboard":
                         SetKeyboardWheelSteering(wheels[i].transform);
                         break;
                 }
@@ -212,7 +209,7 @@ public class Car : MonoBehaviour
     private void SetKeyboardWheelSteering(Transform wheelTransform)
     {
         float calculatedAngle = PositiveAngleToAngle(wheelTransform.transform.localEulerAngles.y);
-        float steerAmount = (Input.GetAxisRaw("Horizontal") == 0 && calculatedAngle != 0) ? -Mathf.Sign(calculatedAngle) * Time.deltaTime * turnSensitivity : Input.GetAxisRaw("Horizontal") * Time.deltaTime * turnSensitivity;
+        float steerAmount = (Input.GetAxisRaw("Horizontal") == 0 && calculatedAngle != 0) ? -Mathf.Sign(calculatedAngle) * Time.deltaTime * turnSensitivity * 2 : Input.GetAxisRaw("Horizontal") * Time.deltaTime * turnSensitivity;
         wheelTransform.transform.Rotate(Vector3.up, steerAmount, Space.Self);
     }
 
