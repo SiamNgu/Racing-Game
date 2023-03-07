@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Home Screen.unity
     guid: 3d5a8252be4294548aee6b269ac75f04
   - enabled: 1
-    path: Assets/Scenes/Test.unity
-    guid: 39bd85ab5d602ea468c92fe0cc97e8fb
+    path: Assets/Scenes/Map Select.unity
+    guid: 5da514bfe1b43f445a48e5fa4e86d39d
+  - enabled: 1
+    path: Assets/Scenes/Level.unity
+    guid: 1447dbf4b7b75154b8b6db029ed504ea
   m_configObjects: {}

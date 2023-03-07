@@ -1,18 +1,23 @@
 using UnityEngine;
 using UnityEngine.Audio;
-using UnityEngine.UI;
-using UnityEngine.UIElements;
 using TMPro;
-using System;
+using UnityEngine.UI;
+
 public class SettingsPanelScript : MonoBehaviour
 {
-    [SerializeField] private UnityEngine.UIElements.Slider volumeSlider;
-
     [SerializeField] private AudioMixer audioMixer;
+    [SerializeField] private Slider volumeSlider;
     [SerializeField] private TMP_Dropdown steeringDeviceDropdown;
     private void OnEnable()
     {
         steeringDeviceDropdown.value = PlayerPrefs.GetInt("Steering Device", 0);
+        float volume;
+        bool isExist = audioMixer.GetFloat("Volume", out volume);
+        if (isExist) 
+        {
+            Debug.Log(volume);
+            volumeSlider.value = volume;
+        }
     }
     public void SetVolume(float volume)
     {

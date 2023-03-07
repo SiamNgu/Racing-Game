@@ -30,13 +30,19 @@ public class GameManager : MonoBehaviour
     private string s_minutes;
 
     [Header("References")]
-    [SerializeField] private GameObject finishLine;
+    [SerializeField] private GameObject finishLinePrefab;
     [SerializeField] private LayerMask finishLineLayerMask;
     [SerializeField] private Car car;
 
+    private Transform instantiatedFinishLine;
     private void Start()
     {
         Resume();
+        Transform instantiatedMap = Instantiate(DataBetweenScenes.mapSelected.prefab).transform;
+        instantiatedFinishLine = Instantiate(finishLinePrefab, instantiatedMap).transform;
+        instantiatedFinishLine.position = DataBetweenScenes.mapSelected.finishLine.position;
+        instantiatedFinishLine.rotation = DataBetweenScenes.mapSelected.finishLine.quaternion;
+        car.transform.position = DataBetweenScenes.mapSelected.spawnPosition;
     }
 
     void Update()
@@ -47,7 +53,7 @@ public class GameManager : MonoBehaviour
             else if (gameState == GameStates.PlayState) Pause();
         }
 
-        if (Physics.OverlapBox(finishLine.transform.position, finishLine.GetComponent<MeshFilter>().mesh.bounds.size, finishLine.transform.rotation, finishLineLayerMask).Length > 0)
+        if (Physics.OverlapBox(instantiatedFinishLine.position, instantiatedFinishLine.GetComponent<MeshFilter>().mesh.bounds.size, instantiatedFinishLine.transform.rotation, finishLineLayerMask).Length > 0)
         {
             Finish();
         }
