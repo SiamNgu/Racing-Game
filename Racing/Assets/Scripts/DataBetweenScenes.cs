@@ -4,5 +4,6 @@ using UnityEngine;
 
 public static class DataBetweenScenes
 {
-    public static Map mapSelected;
+    public static MapData mapSelected;
+    public static CarData carSelected;
 }

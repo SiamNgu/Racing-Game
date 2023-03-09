@@ -5,11 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Maps", menuName = "ScriptableObjects/MapsScriptableObject", order = 1)]
 public class MapsScriptableObject : ScriptableObject
 {
-    public Map[] maps;
+    public MapData[] maps;
 }
 
 [Serializable]
-public class Map
+public class MapData
 {
     [Serializable] public struct Placement
     {
