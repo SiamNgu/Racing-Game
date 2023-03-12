@@ -32,7 +32,7 @@ public class CustomSwipeScript : MonoBehaviour
     {
         int indexToSet = currentIndex + amount;
         if (indexToSet < 0) indexToSet = positions.Length - 1;
-        if (indexToSet >= positions.Length - 1) indexToSet = 0;
+        if (indexToSet > positions.Length - 1) indexToSet = 0;
         currentIndex = indexToSet;
     }
 

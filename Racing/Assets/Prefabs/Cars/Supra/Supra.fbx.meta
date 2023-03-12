@@ -1,0 +1,338 @@
+fileFormatVersion: 2
+guid: 1d22c543f9f60054c8d2e64f861f775d
+ModelImporter:
+  serializedVersion: 20300
+  internalIDToNameTable: []
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_A02.001
+    second: {fileID: 2100000, guid: ec82841ed773ad34986630a6640b03b1, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Color_A022.001
+    second: {fileID: 2100000, guid: fd102bb78b04dbe42afde60a651c4e72, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.001
+    second: {fileID: 2100000, guid: f2f7f6cbd00201a489af4f4378d0295a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.004
+    second: {fileID: 2100000, guid: 33d87168a8034b2409f1332e6e70f300, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_carpaint.001
+    second: {fileID: 2100000, guid: 61556eca30e83e8429696403215728c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_chrome.001
+    second: {fileID: 2100000, guid: 19799391b4e23cb45b1181941516ffff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_display_int_tex.001
+    second: {fileID: 2100000, guid: 9168ebccecf55d34381d11b71fc669f3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_fabric.001
+    second: {fileID: 2100000, guid: c47fd4687f2e75e4ab7deba8c7794732, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glassRedIllumTexT
+    second: {fileID: 2100000, guid: a61de8d6dd406dc45a56f5b64a00b76f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glass_bumpL.001
+    second: {fileID: 2100000, guid: e3d8cc2cd53e4cc4088b300231122c85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glass_clear.001
+    second: {fileID: 2100000, guid: 2eec2fc699e222745b3be46857673837, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glass_clear.002
+    second: {fileID: 2100000, guid: c42e43cec8f5e6b429b0dcf7619f5400, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glass_clearInt.001
+    second: {fileID: 2100000, guid: 16f5100f47cd2c541bebd903efc9df0f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glass_dark.001
+    second: {fileID: 2100000, guid: ec2443c9224947546bf17134b6f6fee6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glass_orange_bump
+    second: {fileID: 2100000, guid: 75c9faf8788e02e4e9a3b80c1bad79d6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glass_red.001
+    second: {fileID: 2100000, guid: e3ccdec3c44b9ff4ba3a87fd17029983, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_interiorA.001
+    second: {fileID: 2100000, guid: 0d883ec3781224c4792dfbf1360544c9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_leather.001
+    second: {fileID: 2100000, guid: 37246c5ecefb8af4e83f943dc3ef597a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_leatherRed.001
+    second: {fileID: 2100000, guid: 2e13b268f1ce44e4c9d14294d855a716, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_lightingRed.001
+    second: {fileID: 2100000, guid: b1c01817623890f48a0684fe44464d87, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_metal_def.001
+    second: {fileID: 2100000, guid: 4633a401e935b0a40889c77bc9354505, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plasticBB.001
+    second: {fileID: 2100000, guid: 93d2e2bf60505e04391a686574b80c5b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plasticBB1.001
+    second: {fileID: 2100000, guid: 96e9631c5320f8b499341081a09ddab6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plasticBlack_perf
+    second: {fileID: 2100000, guid: da7c0637003a7864ba0c764619e0fa19, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plasticGlossy.001
+    second: {fileID: 2100000, guid: 2068051c8035cc649a079a5142a5e968, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plastic_int.001
+    second: {fileID: 2100000, guid: 0e95ede7ec915984e8d521eeeef52bbd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plastic_intB_bump.001
+    second: {fileID: 2100000, guid: 2452313f85bdc4d408f4ce764000c58f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plastic_intB_tex.001
+    second: {fileID: 2100000, guid: 4135c3938c08b554fb2b7a02567361a7, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plastic_int_tex.001
+    second: {fileID: 2100000, guid: 0ceb9c1ca8eb5bd4ab0b691e3e2ea8cb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plasticblack.001
+    second: {fileID: 2100000, guid: 8720585b6d74c1a41ab92552844e17ec, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plasticblackD.002
+    second: {fileID: 2100000, guid: 8a862c68aa961db4fad79da11f6e11e0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plasticblack_in.001
+    second: {fileID: 2100000, guid: a7288fcd1ee9b3d44bca0a6cc69c0105, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plasticblack_matt.001
+    second: {fileID: 2100000, guid: c9af4537a6f7f6f44b1482e2b5185f3e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_reflect.001
+    second: {fileID: 2100000, guid: edd1a90e242a79b4d83ef10ebc774db6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_reflectLed.002
+    second: {fileID: 2100000, guid: 27aafe974f551f743987f0fa798d06b5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_reflect_bumpG.001
+    second: {fileID: 2100000, guid: 598a7147ece83a546950b42b84e007ea, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_reflect_bumpL.001
+    second: {fileID: 2100000, guid: 40f660f58317e1044826e65c93483dcc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_seam.001
+    second: {fileID: 2100000, guid: f6b6163dbba6c9c48b44b18ae2ca8ca0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_seamSW.001
+    second: {fileID: 2100000, guid: dfe2cacb8acaa6843b158f3f6c0a7f0d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_seatbelt.001
+    second: {fileID: 2100000, guid: b6a4c459ebd13f041a2af8374378f90e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_shade.001
+    second: {fileID: 2100000, guid: 3709c3577987a96469cc14f8f49e688a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_white.001
+    second: {fileID: 2100000, guid: 7a9b940eb192262489d4e6eb55c8f89e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Untitled2.001
+    second: {fileID: 2100000, guid: 0e5da98b3349b204dbdefa71c7798b13, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_glassRedIllumTexT_baseColor
+    second: {fileID: 2800000, guid: dc643bea91bc0ec4ead5c9d593b28385, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_plastic_int_tex.001_baseColor
+    second: {fileID: 2800000, guid: e3100c2c47302df4093fb30d94eef838, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Toyota_Supra_2020_with_Interior_noTTo3Ds_seamSW.001_baseColor
+    second: {fileID: 2800000, guid: 19e607f59e2d4f247aced10d7560d4b8, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Untitled2.001_baseColor
+    second: {fileID: 2800000, guid: 0a5858dfcc78d914ca681e9101952475, type: 3}
+  materials:
+    materialImportMode: 2
+    materialName: 0
+    materialSearch: 1
+    materialLocation: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    importAnimatedCustomProperties: 0
+    importConstraints: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    useSRGBMaterialColor: 1
+    sortHierarchyByName: 1
+    importVisibility: 1
+    importBlendShapes: 1
+    importCameras: 1
+    importLights: 1
+    fileIdsGeneration: 2
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    keepQuads: 0
+    weldVertices: 1
+    bakeAxisConversion: 0
+    preserveHierarchy: 0
+    skinWeightsMode: 0
+    maxBonesPerVertex: 4
+    minBoneWeight: 0.001
+    meshOptimizationFlags: -1
+    indexFormat: 0
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVMarginMethod: 1
+    secondaryUVMinLightmapResolution: 40
+    secondaryUVMinObjectScale: 1
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+    legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
+    blendShapeNormalImportMode: 1
+    normalSmoothingSource: 0
+  referencedClips: []
+  importAnimation: 1
+  humanDescription:
+    serializedVersion: 3
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    globalScale: 1
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  autoGenerateAvatarMappingIfUnspecified: 1
+  animationType: 2
+  humanoidOversampling: 1
+  avatarSetup: 0
+  addHumanoidExtraRootOnlyWhenUsingAvatar: 1
+  remapMaterialsIfMaterialImportModeIsNone: 0
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

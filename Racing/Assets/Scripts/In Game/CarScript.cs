@@ -50,7 +50,7 @@ public class CarScript : MonoBehaviour
     {
         #region Initializing Data
         wheelReferences = new Transform[4];
-        CarData carToSpawn = carsData.cars[0];
+        CarData carToSpawn = DataBetweenScenes.carSelected;
         string[] namingWheel = { "FR", "FL", "RR", "RL" };
         Vector3[] positionWheel = {
             carToSpawn.FRWheelPos,
@@ -70,8 +70,18 @@ public class CarScript : MonoBehaviour
             wheelReferences[i] = instantiatedWheelTransform;
 
             //Istantiating wheel meshes
-            if (namingWheel[i][1] == 'R') Instantiate(carToSpawn.RWheel, instantiatedWheelTransform).name = namingWheel + " Mesh";
-            else if (namingWheel[i][1] == 'L') Instantiate(carToSpawn.LWheel, instantiatedWheelTransform).name = namingWheel + "Mesh";
+            GameObject instantiatedMesh;
+            if (namingWheel[i][1] == 'R')
+            {
+                instantiatedMesh = Instantiate(carToSpawn.leftFacingWheel, instantiatedWheelTransform);
+                instantiatedMesh.transform.localRotation = Quaternion.Euler(0f, 0f, 180f);
+            }
+            else
+            {
+                instantiatedMesh = Instantiate(carToSpawn.leftFacingWheel, instantiatedWheelTransform);
+            }
+            instantiatedMesh.transform.localPosition = Vector3.zero;
+            instantiatedMesh.name = namingWheel + " Mesh";
         }
         #endregion
         //Instantiating car

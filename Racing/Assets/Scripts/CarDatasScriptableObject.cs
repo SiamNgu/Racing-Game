@@ -19,8 +19,7 @@ public class CarData
     public AudioClip engineSound;
     public Vector3 RLWheelPos;
     public Vector3 FRWheelPos;
-    public GameObject RWheel;
-    public GameObject LWheel;
+    public GameObject leftFacingWheel;
     public GameObject car;
     public Vector3 colliderSize;
     public float springHeight;

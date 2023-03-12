@@ -13,6 +13,18 @@ MonoBehaviour:
   m_Name: Cars
   m_EditorClassIdentifier: 
   cars:
+  - name: Supra
+    image: {fileID: 21300000, guid: af04727fd952a014faae87fd5a6f7d19, type: 3}
+    brakeForce: 200
+    topSpeed: 260
+    acceleration: 1000
+    engineSound: {fileID: 8300000, guid: 30ab19edabbfdea499f3db426001e120, type: 3}
+    RLWheelPos: {x: -0.9649226, y: 0.3390184, z: -1.3091508}
+    FRWheelPos: {x: 0.9498149, y: 0.33918926, z: 1.6489521}
+    leftFacingWheel: {fileID: -2353407451053397215, guid: bc143543a7287844c9a0d495971c7b9c, type: 3}
+    car: {fileID: 919132149155446097, guid: 1d22c543f9f60054c8d2e64f861f775d, type: 3}
+    colliderSize: {x: 2.24, y: 1.34, z: 5}
+    springHeight: 0.5
   - name: Maserati
     image: {fileID: 21300000, guid: 6256964fca1664143948c2b63305a5e8, type: 3}
     brakeForce: 200
@@ -21,8 +33,7 @@ MonoBehaviour:
     engineSound: {fileID: 8300000, guid: 30ab19edabbfdea499f3db426001e120, type: 3}
     RLWheelPos: {x: -0.7786448, y: 0.3339949, z: -1.492764}
     FRWheelPos: {x: 0.7786439, y: 0.33390158, z: 1.47845}
-    RWheel: {fileID: 8106050551172650141, guid: f11f43d8e44519c43a030249f00a7944, type: 3}
-    LWheel: {fileID: 8924532048342702551, guid: d7f24a308753c9c41a3f9652b34aaffa, type: 3}
+    leftFacingWheel: {fileID: 8924532048342702551, guid: d7f24a308753c9c41a3f9652b34aaffa, type: 3}
     car: {fileID: 919132149155446097, guid: e32f21980c47c0540b3812981cca5129, type: 3}
     colliderSize: {x: 1.7, y: 1.2, z: 4}
     springHeight: 0.36

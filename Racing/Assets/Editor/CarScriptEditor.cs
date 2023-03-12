@@ -10,7 +10,7 @@ public class CarScriptEditor : Editor
     {
         CarScript car  = (CarScript)target;
         base.OnInspectorGUI();
-        if (GUILayout.Button("Spawn Wheels"))
+        if (GUILayout.Button("Spawn Car"))
         {
             car.SpawnCar();
         }
