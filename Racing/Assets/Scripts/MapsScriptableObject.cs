@@ -14,7 +14,7 @@ public class MapData
     [Serializable] public struct Placement
     {
         public Vector3 position;
-        public Quaternion quaternion;
+        public Vector3 eulerAngles;
     };
     public string name;
     public GameObject prefab;

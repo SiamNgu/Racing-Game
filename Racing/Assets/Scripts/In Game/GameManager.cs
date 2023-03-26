@@ -41,7 +41,7 @@ public class GameManager : MonoBehaviour
         Transform instantiatedMap = Instantiate(DataBetweenScenes.mapSelected.prefab).transform;
         instantiatedFinishLine = Instantiate(finishLinePrefab, instantiatedMap).transform;
         instantiatedFinishLine.position = DataBetweenScenes.mapSelected.finishLine.position;
-        instantiatedFinishLine.rotation = DataBetweenScenes.mapSelected.finishLine.quaternion;
+        instantiatedFinishLine.rotation = Quaternion.Euler( DataBetweenScenes.mapSelected.finishLine.eulerAngles );
         car.transform.position = DataBetweenScenes.mapSelected.spawnPosition;
     }
 
@@ -53,7 +53,7 @@ public class GameManager : MonoBehaviour
             else if (gameState == GameStates.PlayState) Pause();
         }
 
-        if (Physics.OverlapBox(instantiatedFinishLine.position, instantiatedFinishLine.GetComponent<MeshFilter>().mesh.bounds.size, instantiatedFinishLine.transform.rotation, finishLineLayerMask).Length > 0)
+        if (Physics.OverlapBox(instantiatedFinishLine.position, instantiatedFinishLine.GetChild(1).GetComponent<MeshFilter>().mesh.bounds.size, instantiatedFinishLine.transform.rotation, finishLineLayerMask).Length > 0)
         {
             Finish();
         }

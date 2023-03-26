@@ -15,7 +15,6 @@ public class SettingsPanelScript : MonoBehaviour
         bool isExist = audioMixer.GetFloat("Volume", out volume);
         if (isExist) 
         {
-            Debug.Log(volume);
             volumeSlider.value = volume;
         }
     }

@@ -12,6 +12,8 @@ public class CarScript : MonoBehaviour
     [SerializeField] private float springHeight;
     [SerializeField] private AudioSource engineAudioSource;
     [SerializeField] private CarDatasScriptableObject carsData;
+    [SerializeField] private GameObject wheelParticle;
+
     [Header("Settings")]
     public string steeringDevice;
     #endregion
@@ -31,12 +33,20 @@ public class CarScript : MonoBehaviour
     #region Static Variables
     private float wheelRadius;
     private Transform[] wheelReferences;
+    private WheelParticle[] wheelParticleReferences;
     private Rigidbody rb;
     #endregion
+
+    private struct WheelParticle
+    {
+        public Transform transform;
+        public TrailRenderer skidMarks;
+    }
 
     public float kmph { get; private set; } = 0;
     private float engineForceOutput;
     public float rpm { get; private set; } = 0;
+    private bool isDrifting = false; 
     private void Reset()
     {
         #region Rigidbody Default Variables
@@ -50,6 +60,7 @@ public class CarScript : MonoBehaviour
     {
         #region Initializing Data
         wheelReferences = new Transform[4];
+        wheelParticleReferences = new WheelParticle[4];
         CarData carToSpawn = DataBetweenScenes.carSelected;
         string[] namingWheel = { "FR", "FL", "RR", "RL" };
         Vector3[] positionWheel = {
@@ -69,6 +80,7 @@ public class CarScript : MonoBehaviour
             instantiatedWheelTransform.position = positionWheel[i];
             wheelReferences[i] = instantiatedWheelTransform;
 
+
             //Istantiating wheel meshes
             GameObject instantiatedMesh;
             if (namingWheel[i][1] == 'R')
@@ -82,6 +94,12 @@ public class CarScript : MonoBehaviour
             }
             instantiatedMesh.transform.localPosition = Vector3.zero;
             instantiatedMesh.name = namingWheel + " Mesh";
+
+            //Instantiating Particles
+            GameObject instantiatedWheelParticle = Instantiate(wheelParticle, wheelReferences[i]);
+            wheelParticleReferences[i].skidMarks = instantiatedWheelParticle.GetComponent<TrailRenderer>();
+            wheelParticleReferences[i].transform = instantiatedWheelParticle.transform;
+            instantiatedWheelParticle.transform.name = namingWheel[i] + " Skid Mark";
         }
         #endregion
         //Instantiating car
@@ -106,7 +124,7 @@ public class CarScript : MonoBehaviour
         engineAudioSource.clip = DataBetweenScenes.carSelected.engineSound;
         //rigidbody
         float betweenWheels = (wheelReferences[0].transform.localPosition.z + wheelReferences[2].transform.localPosition.z) * 0.5f;
-        rb.centerOfMass = new Vector3(0, .17f, betweenWheels);
+        rb.centerOfMass = new Vector3(0, 0, betweenWheels);
         #endregion
 
         steeringDevice = SettingDataClasses.steeringDevices[PlayerPrefs.GetInt("Steering Device")];
@@ -131,10 +149,17 @@ public class CarScript : MonoBehaviour
         engineAudioSource.pitch = rpm;
         engineAudioSource.volume = Mathf.SmoothStep(engineAudioSource.volume, Mathf.Abs(Input.GetAxisRaw("Vertical")), Time.deltaTime * 5);
 
-        #region Wheel Rotations
+        #region Wheels
         //Looping Through Wheels
         for (int i = 0; i < 4; i++)
         {
+            //Particles
+            wheelParticleReferences[i].skidMarks.emitting = false;
+            if (isDrifting)
+            {
+                wheelParticleReferences[i].skidMarks.emitting = true;
+            }
+
             #region Steering for front wheels
             if (i < 2)
             {
@@ -179,6 +204,7 @@ public class CarScript : MonoBehaviour
             //Applying all car forces
             if (isHit)
             {
+                wheelParticleReferences[i].transform.position = hit.point + Vector3.up * 0.01f;
                 targetPos = hit.point + wheelReferences[i].transform.up * wheelRadius;
 
                 #region Calculate Forces
@@ -197,7 +223,13 @@ public class CarScript : MonoBehaviour
                 Vector3 brakingForce = Input.GetKey(KeyCode.Space) ? -wheelReferences[i].transform.forward * wheelVel.z * DataBetweenScenes.carSelected.brakeForce : Vector3.zero;
 
                 //Grip
-                Vector3 xGripForce = -wheelReferences[i].transform.right * wheelVel.x * tyreGrip;
+                float slipAmt = 1;
+                isDrifting = false;
+                if (Mathf.Abs( wheelVel.x) > 10f){
+                    isDrifting = true;
+                    slipAmt = 0.7f;
+                }
+                Vector3 xGripForce = -wheelReferences[i].transform.right * wheelVel.x * tyreGrip * slipAmt;
                 #endregion
 
                 //Applying force

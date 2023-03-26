@@ -17,7 +17,7 @@ MonoBehaviour:
     image: {fileID: 21300000, guid: af04727fd952a014faae87fd5a6f7d19, type: 3}
     brakeForce: 200
     topSpeed: 260
-    acceleration: 1000
+    acceleration: 1600
     engineSound: {fileID: 8300000, guid: 30ab19edabbfdea499f3db426001e120, type: 3}
     RLWheelPos: {x: -0.9649226, y: 0.3390184, z: -1.3091508}
     FRWheelPos: {x: 0.9498149, y: 0.33918926, z: 1.6489521}
